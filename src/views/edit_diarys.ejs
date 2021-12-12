@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyDiary</title>
+    <!-- Load icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!---Material Icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Montserrat -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="../css/style4.css">
+
+</head>
+<body>
+
+   <div class="dashboard">
+    <div class="">
+        <h1><i class="fa fa-pencil" style="font-size:25px; float: left; margin-left: 10px;"></i><b style="margin-right: 15px;">MyDiary</b></h1>
+    </div>
+    <form id="edit-diary-form" class="responsive" action="/edit/<%= diaryDetail._id %>" method="POST" enctype="multipart/form-data">
+       <div class="">
+        <label>Name:</label>
+        <div class="input-group">
+            <input type="text" name="file_name" placeholder="Enter file name..." value="<%= diaryDetail.file_name %>">
+            <div class="upload" style="float: right;">
+                <input type="file" id="file" name="picture" accept="image/*" value="<%= diaryDetail.image %>">
+                <label for="file">
+                <i class="material-icons">add_photo_alternate</i>
+                Photo
+                </label>
+            </div>
+        </div>
+        <label>Description:</label> 
+        <div class="group">
+            <textarea name="description" id="description" cols="52" rows="20"><%= diaryDetail.description %></textarea>
+            <div id="display_image">
+                <div class="alert alert-success alert dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <img src="../uploads/<%= diaryDetail.image %>" width="100%" height="100%">
+                </div>
+            </div>
+            
+           
+        </div>
+        <div>
+            <input type="submit" class="btn btn-success" name="submit" value="Update"/>
+           
+            <input class="btn btn-danger" action="action" onclick="window.history.go(-1); return false;" type="submit" value="Cancel" style="margin-right: 15px;"/>
+        </div>
+       </div>
+    
+    </form>
+   </div>
+   <script src="../js/script3.js"></script>
+</body>
+</html>
