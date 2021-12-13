@@ -10,6 +10,12 @@ const userRouter = require('./routers/user')
 
 const app = express()
 
+const port = process.env.PORT || 8080;
+
+app.listen(port, () => {
+    console.log('Server is up on port ' + port)
+})
+
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.urlencoded({extended: false}))
