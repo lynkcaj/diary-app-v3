@@ -4,7 +4,7 @@ const session = require('express-session')
 
 const router = new express.Router()
 
-router.get('/users/login', (req, res)=>{
+router.get('/', (req, res)=>{
     return res.render('login', {message: req.flash('message')});
 })
 
@@ -29,7 +29,7 @@ router.post('/users', async (req, res) => {
             await user.save()
             //const token = await user.generateAuthToken()
             // res.status(201).send({ user, token })
-            res.redirect('/users/login');
+            res.redirect('/');
         } catch (e) {
             res.status(400).send(e)
         }
@@ -38,7 +38,7 @@ router.post('/users', async (req, res) => {
     }
 })
 
-router.post('/users/login', async (req, res) => {
+router.post('/', async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
@@ -50,7 +50,7 @@ router.post('/users/login', async (req, res) => {
             res.redirect('/diaryList');
         } catch (e) {
             req.flash('message', 'Unable to login, invalid email or password!')
-            res.redirect('/users/login');
+            res.redirect('/');
         }
     }
 })
